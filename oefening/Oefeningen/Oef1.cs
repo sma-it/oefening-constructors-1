@@ -21,20 +21,28 @@ namespace Oefeningen
         public int Radius { get; set; }
         public string Color { get; set; }
 
-        public double Perimeter()
+        public Circle() { }
+
+        public Circle(int Radius, string Color)
         {
-            return 2 * Math.PI * Radius;
+            this.Radius = Radius;
+            this.Color = Color;
         }
 
-        public double Area()
+        public double Perimeter
         {
-            return Math.PI * Math.Pow(Radius, 2);
+            get => 2 * Math.PI * Radius;
+        }
+
+        public double Area
+        {
+            get => Math.PI * Math.Pow(Radius, 2);
         }
 
         public string AsText()
         {
-            return "This is a " + Color + " circle, with a perimeter of " + Perimeter()
-                + " and an area of " + Area();
+            return "This is a " + Color + " circle, with a perimeter of " + Perimeter
+                + " and an area of " + Area;
         }
 	}
 
@@ -55,6 +63,8 @@ namespace Oefeningen
             Console.WriteLine();
 
             // add your own circles here
+            Circle c2 = new Circle(3, "red");
+            Console.WriteLine(c2.AsText());
         }
     }
     

@@ -22,12 +22,27 @@ namespace Oefeningen
          *      
          * 4.   Maak een boolean read-only property die je laat weten
          *      of de rechthoek eigenlijk een vierkant is. 
-         */      
+         */
 
-        public int Height { get; set; }
-        public int Width { get; set; }
+        private int height;
+        public int Height { get => height; }
+
+        private int width;
+        public int Width { get => width; }
 
         public int Area { get => Height * Width; }
+
+        public bool IsSquare { get => height == width; }
+
+        public Rectangle()
+        {
+           height = width = 1;
+        }
+        public Rectangle(int Height, int Width)
+        {
+            this.height = Height;
+            this.width = Width;
+        }
 
         public string AsText()
         {
@@ -44,15 +59,13 @@ namespace Oefeningen
 
             var r1 = new Rectangle();
             Console.WriteLine(r1.AsText());
+            Console.WriteLine("Is a square: " + r1.IsSquare);
             Console.WriteLine();
 
-            var r2 = new Rectangle();
-            r2.Width = 3; // will this work after exercise 3??
-            r2.Height = 4;
+            var r2 = new Rectangle(3, 4);
             Console.WriteLine(r2.AsText());
+            Console.WriteLine("Is a square: " + r2.IsSquare);
             Console.WriteLine();
-
-            // add your own rectangles here
         }
     }
 }

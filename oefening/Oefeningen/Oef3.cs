@@ -21,11 +21,36 @@ namespace Oefeningen
          * 4.   Maak een tweede constructor waar je je ook DateOfBirth mee kan instellen.
          * 
          */
-         
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+
+        public int Age {
+            get {
+                int age = 0;
+                age = DateTime.Now.Year - DateOfBirth.Year;
+                if (DateTime.Now.DayOfYear < DateOfBirth.DayOfYear)
+                    age = age - 1;
+
+                return age;
+            }
+        }
+
+        public User(string FirstName, string LastName)
+        {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+        }
+
+        public User(string FirstName, string LastName, DateTime DateOfBirth) 
+            : this(FirstName, LastName)
+        {
+            this.DateOfBirth = DateOfBirth;
+        }
+
         public string AsText()
         {
-            // return some info about this user
-            return string.Empty;
+            return FirstName + " " + LastName + " is " + Age + " years old.";
         }
     }
 
@@ -36,8 +61,11 @@ namespace Oefeningen
             Console.WriteLine("Testing the User class... ");
             Console.WriteLine(); // extra white line
 
-            var user = new User();
-            Console.WriteLine(user.AsText());
+            var user1 = new User("John", "Doe", new DateTime(2000, 6, 30));
+            Console.WriteLine(user1.AsText());
+
+            var user2 = new User("Jane", "Doe");
+            Console.WriteLine(user2.AsText());
         }
     }
 }

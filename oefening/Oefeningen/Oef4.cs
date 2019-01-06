@@ -32,20 +32,26 @@ namespace Oefeningen
 
     public class Location
     {
+        string name;
+        public string Name { get => name; }
+
+        GeoCoordinate coordinate;
+        public GeoCoordinate Coordinate { get => coordinate; }
 
         public Location(string name, GeoCoordinate coordinate)
         {
-
+            this.name = name;
+            this.coordinate = coordinate;
         }
 
         public double DistanceTo(Location other)
         {
-            return 0;
+            return coordinate.GetDistanceTo(other.coordinate);
         }
 
         public string AsText()
         {
-            return string.Empty;
+            return Name + " is located at " + coordinate.ToString();
         }
     }
 
@@ -70,7 +76,7 @@ namespace Oefeningen
             Console.WriteLine("Location 2: " + aarschot.AsText());
             Console.WriteLine();
 
-            Console.WriteLine("Distance between locations: " + aarschot.DistanceTo(brussel));
+            Console.WriteLine("Distance between locations: " + (int)(aarschot.DistanceTo(brussel) / 1000) + "km");
         }
     }
 }
