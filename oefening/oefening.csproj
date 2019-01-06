@@ -58,6 +58,7 @@
     <Compile Include="Oefeningen\Oef3.cs" />
     <Compile Include="Oefeningen\Oef4.cs" />
     <Compile Include="Oefeningen\Oef5.cs" />
+    <Compile Include="Oefeningen\Oef6.cs" />
     <Compile Include="Utils\Menu.cs" />
     <Compile Include="Utils\Method.cs" />
     <Compile Include="Utils\Object.cs" />
